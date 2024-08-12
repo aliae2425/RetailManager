@@ -19,6 +19,7 @@ namespace RMDataManager
                     {
 
                         c.DocumentFilter<AuthTokenOperation>();
+                        c.OperationFilter<AuthorizationOperationFilter>();
 
                         // By default, the service root url is inferred from the request used to access the docs.
                         // However, there may be situations (e.g. proxy and load-balanced environments) where this does not
@@ -36,7 +37,7 @@ namespace RMDataManager
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1 a", "418 family API");
+                        c.SingleApiVersion("v1", "418 family API");
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
