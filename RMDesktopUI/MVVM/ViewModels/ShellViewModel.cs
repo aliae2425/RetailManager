@@ -9,6 +9,11 @@ namespace RMDesktopUI.MVVM.ViewModels
 {
     internal class ShellViewModel : Conductor<object>
     {
-
+        private LoginViewModel _loginMV; 
+        public ShellViewModel(LoginViewModel loginMV)
+        {
+            _loginMV = loginMV;
+            ActivateItemAsync(_loginMV);
+        }
     }
 }
