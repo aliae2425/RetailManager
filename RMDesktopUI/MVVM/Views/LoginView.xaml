@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RMDesktopUI.MVVM.Views"
              mc:Ignorable="d" 
-             Background="Wheat"
              d:DesignHeight="425" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -37,7 +36,7 @@
                      FontSize="24" FontFamily="Poppins"
                      Text="Username:" 
                      />
-        <TextBox x:Name="UserName" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"
+        <TextBox x:Name="Username" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"
                  MinWidth="120" MinHeight="30" />
         
         <!-- User name -->
@@ -53,7 +52,7 @@
         <Button Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"
                 Padding="5"
                 Content="Login" FontSize="25" Margin="0 10"
-                HorizontalAlignment="Center" x:Name="LoginButton"/>
+                HorizontalAlignment="Center" x:Name="LogIn"/>
 
 
     </Grid>
