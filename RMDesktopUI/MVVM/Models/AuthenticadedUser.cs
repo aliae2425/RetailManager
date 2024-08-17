@@ -8,7 +8,7 @@ namespace RMDesktopUI.MVVM.Models
 {
     public class AuthenticadedUser
     {
-        public string AccessToken { get; set; }
-        public string UserName { get; set; }
+        public string access_token { get; set; }
+        public string userName { get; set; }
     }
 }
