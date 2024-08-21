@@ -1,6 +1,10 @@
 ﻿CREATE PROCEDURE [dbo].[spUserLookup]
-	@param1 int = 0,
-	@param2 int
+	@Id NVARCHAR(128)
 AS
-	SELECT @param1, @param2
-RETURN 0
+begin
+	Set nocount on;
+
+	SELECT Nom, Prenom, Email, CreateDate
+	from [dbo].[User]
+	WHERE Id = @Id;
+end
