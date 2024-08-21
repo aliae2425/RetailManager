@@ -12,7 +12,7 @@
         <!--Error block-->
         <Border VerticalAlignment="Top" Margin="15" Background="#B71C1C"
                 CornerRadius="10"
-                Visibility="{Binding IsErrorVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Visibility="{Binding IsErrorVisible,Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"
                 Height="30" Width="300">
             <TextBlock x:Name="ErrorMessage"
                        Text="Error"
@@ -32,7 +32,7 @@
                 <DropShadowEffect BlurRadius="50" ShadowDepth="0" Color="#37404d"/>
             </Border.Effect>
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  Width="250"
                         VerticalAlignment="Center" Margin="20">
                 <TextBlock Text="Welcome" Foreground="White"
                            FontSize="25" FontWeight="Bold" FontFamily="Poppins"/>
@@ -45,7 +45,7 @@
                      Margin="0 10 10 10"
                      Text="Username:" 
                      />
-                    <TextBox x:Name="Username" VerticalAlignment="Center" 
+                    <TextBox x:Name="Username" VerticalAlignment="Center" HorizontalAlignment="Right" 
                          Width="150" MinHeight="30"
                          BorderThickness="0,0,0,2" FontFamily="poppins" Foreground="White">
                         <TextBox.Style>
@@ -68,7 +68,7 @@
                                FontSize="16" FontFamily="Poppins" Foreground="White"
                                Margin="0 10 10 10"
                                Text="Password:"/>
-                    <PasswordBox x:Name="Password" VerticalAlignment="Center" 
+                    <PasswordBox x:Name="Password" VerticalAlignment="Center" HorizontalAlignment="Right" 
                                  BorderThickness="0,0,0,2" Foreground="White"
                                  Width="150" MinHeight="30">
                         <PasswordBox.Style>

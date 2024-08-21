@@ -14,6 +14,7 @@ namespace RMDesktopUI.MVVM.ViewModels
     {
         private string _username;
         private string _password;
+        private string _errorMessage;
         private IAPIHelper _apiHelper;
 
         public LoginViewModel( IAPIHelper ApiHelper)
@@ -54,22 +55,19 @@ namespace RMDesktopUI.MVVM.ViewModels
                 }
                 return output;
             }
+            
         }
-
-        private string _errorMessage;
 
         public string ErrorMessage
         {
             get { return _errorMessage; }
             set 
             {
+                _errorMessage = value; 
                 NotifyOfPropertyChange(() => ErrorMessage);
                 NotifyOfPropertyChange(() => IsErrorVisible);
-                _errorMessage = value; 
             }
         }
-
-
 
         public bool CanLogIn
         {
@@ -91,7 +89,7 @@ namespace RMDesktopUI.MVVM.ViewModels
             try
             {
                 var result = await _apiHelper.Authenticate(Username, Password);
-                ErrorMessage = "You're log";
+                ErrorMessage = string.Empty;
             }
             catch (Exception ex)
             {
