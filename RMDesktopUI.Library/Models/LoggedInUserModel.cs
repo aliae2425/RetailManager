@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace RMDesktopUI.Library
 {
-    public class LoggedInUserModel
+    public class LoggedInUserModel : ILoggedInUserModel
     {
+        public string Token { get; set; }
         public string Id { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }

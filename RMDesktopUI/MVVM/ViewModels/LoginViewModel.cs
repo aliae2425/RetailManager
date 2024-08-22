@@ -89,15 +89,18 @@ namespace RMDesktopUI.MVVM.ViewModels
         {
             try
             {
-                ErrorMessage = string.Empty;
                 var result = await _apiHelper.Authenticate(Username, Password);
+                ErrorMessage = string.Empty;
                 // TODO: Capture more information about the user
+                await _apiHelper.GetLoggedinUserInfo(result.access_token);
             }
             catch (Exception ex)
             {
                 ErrorMessage = ex.Message;
             }
         }
+
+
         
     }
 }
