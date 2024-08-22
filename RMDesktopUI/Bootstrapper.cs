@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using RMDesktopUI.Helpers;
+using RMDesktopUI.Library.API;
 using RMDesktopUI.MVVM.ViewModels;
 using System;
 using System.Collections.Generic;

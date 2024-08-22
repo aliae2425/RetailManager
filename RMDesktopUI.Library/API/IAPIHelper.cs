@@ -1,7 +1,7 @@
 ﻿using RMDesktopUI.MVVM.Models;
 using System.Threading.Tasks;
 
-namespace RMDesktopUI.Helpers
+namespace RMDesktopUI.Library.API
 {
     public interface IAPIHelper
     {
