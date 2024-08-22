@@ -5,15 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RMDesktopUI.MVVM.Views"
         mc:Ignorable="d"
-        FontSize="18"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        BorderBrush="Transparent"
+        Background="#2a2f39"
+        Foreground="White"
         Title="ShellView" Height="450" Width="800">
-
-
-
+    
         <Grid>
             <ContentControl x:Name="ActiveItem" Margin="5"/>
         </Grid>
+    
 </Window>

@@ -108,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\Views\SalesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,9 +120,13 @@
   <ItemGroup>
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="MVVM\ViewModels\LoginViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\SalesViewModel.cs" />
     <Compile Include="MVVM\ViewModels\ShellViewModel.cs" />
     <Compile Include="MVVM\Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\SalesView.xaml.cs">
+      <DependentUpon>SalesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
