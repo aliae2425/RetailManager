@@ -118,6 +118,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventModels\LogOnEvent.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="MVVM\ViewModels\LoginViewModel.cs" />
     <Compile Include="MVVM\ViewModels\SalesViewModel.cs" />

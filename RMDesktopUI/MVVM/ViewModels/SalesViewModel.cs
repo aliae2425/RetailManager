@@ -12,7 +12,7 @@ namespace RMDesktopUI.MVVM.ViewModels
     {
 		private BindingList<string> _Products;
 		private BindingList<String> _cart;
-		private string _ItemQuantity;
+		private int _ItemQuantity;
 
 		public BindingList<string> Products
 		{
@@ -34,7 +34,7 @@ namespace RMDesktopUI.MVVM.ViewModels
 			}
 		}
 
-		public string ItemQuantity
+		public int ItemQuantity
 		{
 			get { return _ItemQuantity; }
 			set 
@@ -67,7 +67,7 @@ namespace RMDesktopUI.MVVM.ViewModels
             get
             {
                 // Calculate the total of the cart
-                return "0.00€"€;
+                return "0.00€";
             }
         }
 
