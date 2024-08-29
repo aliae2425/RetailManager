@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RMDesktopUI.Library.API
 {
-    public class ProductEndpoint
+    public class ProductEndpoint : IProductEndpoint
     {
         private IAPIHelper _apiHelper;
         public ProductEndpoint(IAPIHelper apiHelper)

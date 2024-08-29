@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="API\APIHelper.cs" />
     <Compile Include="API\IAPIHelper.cs" />
+    <Compile Include="API\IProductEndpoint.cs" />
     <Compile Include="API\ProductEndpoint.cs" />
     <Compile Include="API\ProductModel.cs" />
     <Compile Include="Models\AuthenticadedUser.cs" />
