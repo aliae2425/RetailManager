@@ -26,15 +26,14 @@
 
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Products" FontSize="18" Foreground="White"/>
-                <ListBox x:Name="Product"
-                             Width="200" Height="250" FontSize="18" Foreground="White" 
-                             Background="#37404d" BorderBrush="Gray"
-                             >
+                <ListBox ItemsSource="{Binding Products}"
+                        Width="200" Height="250" FontSize="18" Foreground="White" 
+                         Background="#37404d" BorderBrush="Gray">
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
+                        <!--<StackPanel Orientation="Horizontal">-->
                             <TextBlock Text="{Binding ProductName}" FontSize="18" Foreground="White"/>
-                            <TextBlock Text="{Binding RetailPrice}" FontSize="18" Foreground="White"/>
-                        </StackPanel>
+                            <!--<TextBlock Text="{Binding RetailPrice}" FontSize="18" Foreground="White"/><-->
+                        <!--</StackPanel>-->
                     </DataTemplate>
                     <ListBox.Resources>
                         <Style TargetType="Border">

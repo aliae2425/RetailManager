@@ -12,7 +12,7 @@ namespace RMDesktopUI.MVVM.ViewModels
     public class SalesViewModel : Screen
     {
         private BindingList<ProductModel> _Products;
-		private BindingList<String> _cart;
+		private BindingList<ProductModel> _cart;
 		private int _ItemQuantity;
         
         IProductEndpoint _productEndpoint;
@@ -44,7 +44,7 @@ namespace RMDesktopUI.MVVM.ViewModels
 			}
 		}
 
-		public BindingList<String> Cart
+		public BindingList<ProductModel> Cart
 		{
 			get { return _cart; }
 			set 

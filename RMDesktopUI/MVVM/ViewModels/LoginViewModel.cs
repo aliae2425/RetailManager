@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 
 namespace RMDesktopUI.MVVM.ViewModels
@@ -85,6 +87,14 @@ namespace RMDesktopUI.MVVM.ViewModels
                 }
 
                 return output;
+            }
+        }
+
+        private async void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return && CanLogIn)
+            {
+                await this.LogIn();
             }
         }
 
