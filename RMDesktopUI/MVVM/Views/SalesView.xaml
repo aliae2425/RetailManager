@@ -26,15 +26,17 @@
 
             <StackPanel Grid.Column="0">
                 <TextBlock Text="Products" FontSize="18" Foreground="White"/>
-                <ListBox ItemsSource="{Binding Products}"
+                <ListBox x:Name="Products"
                         Width="200" Height="250" FontSize="18" Foreground="White" 
                          Background="#37404d" BorderBrush="Gray">
-                    <DataTemplate>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
                         <!--<StackPanel Orientation="Horizontal">-->
                             <TextBlock Text="{Binding ProductName}" FontSize="18" Foreground="White"/>
                             <!--<TextBlock Text="{Binding RetailPrice}" FontSize="18" Foreground="White"/><-->
-                        <!--</StackPanel>-->
-                    </DataTemplate>
+                            <!--</StackPanel>-->
+                            </DataTemplate>
+                    </ListBox.ItemTemplate>
                     <ListBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>

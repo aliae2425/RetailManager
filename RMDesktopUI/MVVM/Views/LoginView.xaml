@@ -47,8 +47,12 @@
                      />
                     <TextBox x:Name="Username" VerticalAlignment="Center" HorizontalAlignment="Right" 
                          Width="250" MinHeight="30" FontSize="20" Foreground="white"
-                         BorderThickness="0,0,0,1" FontFamily="poppins"
-                         KeyDown="OnKeyDownHandler">
+                         BorderThickness="0,0,0,1" FontFamily="poppins" AcceptsReturn="False">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter"
+                                        CommandParameter="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}"
+                                        Command="{Binding LogInCommand}"/>  
+                        </TextBox.InputBindings>
                         <TextBox.Style>
                             <Style TargetType="TextBox">
                                 <Setter Property="Background" Value="Transparent"/>
@@ -72,7 +76,7 @@
                                Text="Password : "/>
                     <PasswordBox x:Name="Password" VerticalAlignment="Center" HorizontalAlignment="Right" 
                                  BorderThickness="0,0,0,2" Foreground="white" FontSize="20"
-                                 Width="250" MinHeight="30"  KeyDown="OnKeyDownHandler">
+                                 Width="250" MinHeight="30">
                         <PasswordBox.Style>
                             <Style TargetType="PasswordBox">
                                 <Setter Property="Background" Value="Transparent"/>
