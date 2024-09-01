@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using RMDesktopUI.Library.API;
+using RMDesktopUI.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,8 @@ namespace RMDesktopUI.MVVM.ViewModels
         private BindingList<ProductModel> _Products;
 		private BindingList<ProductModel> _cart;
 		private int _ItemQuantity;
-        
+        private ProductModel _selectedProduct;
+
         IProductEndpoint _productEndpoint;
 
         public SalesViewModel(IProductEndpoint ProductEndpoint)
@@ -54,13 +56,24 @@ namespace RMDesktopUI.MVVM.ViewModels
 			}
 		}
 
-		public int ItemQuantity
+        public ProductModel SelectedProduct
+        {
+            get { return _selectedProduct; }
+            set { 
+                _selectedProduct = value;
+                NotifyOfPropertyChange(() => SelectedProduct);
+            }
+        }
+
+
+        public int ItemQuantity
 		{
 			get { return _ItemQuantity; }
 			set 
 			{
 				_ItemQuantity = value;
 				NotifyOfPropertyChange(() => ItemQuantity);
+                NotifyOfPropertyChange(() => CanAddToCart);
 			}
 		}
 
@@ -98,6 +111,10 @@ namespace RMDesktopUI.MVVM.ViewModels
 				bool output = false;
                 // Make sure something is selected
 				// Make sure a quantity is entered
+                if (ItemQuantity >0 && SelectedProduct?.StockQuantity >= ItemQuantity)
+                {
+                    output = true; 
+                }
                 return output;
             }
         }

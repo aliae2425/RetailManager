@@ -28,7 +28,8 @@
                 <TextBlock Text="Products" FontSize="18" Foreground="White"/>
                 <ListBox x:Name="Products"
                         Width="200" Height="250" FontSize="18" Foreground="White" 
-                         Background="#37404d" BorderBrush="Gray">
+                         Background="#37404d" BorderBrush="Gray" 
+                         SelectedItem="{Binding SelectedProduct}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                         <!--<StackPanel Orientation="Horizontal">-->

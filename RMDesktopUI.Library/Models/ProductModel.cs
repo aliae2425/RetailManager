@@ -1,4 +1,4 @@
-﻿namespace RMDesktopUI.Library.API
+﻿namespace RMDesktopUI.Library.Models
 {
     public class ProductModel
     {
@@ -10,8 +10,6 @@
         public string Description { get; set; }
         public decimal RetailPrice { get; set; }
         public int StockQuantity { get; set; }
-
-
 
     }
 }
