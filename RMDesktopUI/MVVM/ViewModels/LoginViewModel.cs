@@ -90,13 +90,6 @@ namespace RMDesktopUI.MVVM.ViewModels
             }
         }
 
-        private async void OnKeyDownHandler(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return && CanLogIn)
-            {
-                await this.LogIn();
-            }
-        }
 
         public async Task LogIn()
         {

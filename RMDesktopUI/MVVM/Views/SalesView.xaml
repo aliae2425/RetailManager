@@ -82,6 +82,14 @@
                              Width="200" Height="250" FontSize="18" Foreground="White" 
                              Background="#37404d" BorderBrush="Gray"
                              >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <!--<StackPanel Orientation="Horizontal">-->
+                            <TextBlock Text="{Binding Product.ProductName}" FontSize="18" Foreground="White"/>
+                            <!--<TextBlock Text="{Binding RetailPrice}" FontSize="18" Foreground="White"/><-->
+                            <!--</StackPanel>-->
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                     <ListBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"/>

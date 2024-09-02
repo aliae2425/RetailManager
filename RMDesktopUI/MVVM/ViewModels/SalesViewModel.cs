@@ -13,7 +13,7 @@ namespace RMDesktopUI.MVVM.ViewModels
     public class SalesViewModel : Screen
     {
         private BindingList<ProductModel> _Products;
-		private BindingList<ProductModel> _cart;
+		private BindingList<CartItemModel> _cart = new BindingList<CartItemModel>();
 		private int _ItemQuantity;
         private ProductModel _selectedProduct;
 
@@ -46,7 +46,7 @@ namespace RMDesktopUI.MVVM.ViewModels
 			}
 		}
 
-		public BindingList<ProductModel> Cart
+		public BindingList<CartItemModel> Cart
 		{
 			get { return _cart; }
 			set 
@@ -121,7 +121,12 @@ namespace RMDesktopUI.MVVM.ViewModels
 
 		public void AddToCart()
         {
-            // Add the selected product to the cart
+            CartItemModel cartItem = new CartItemModel
+            {
+                Product = SelectedProduct,
+                QuantityInCart = ItemQuantity
+            };
+            Cart.Add(cartItem);
         }
 
 		public bool CanRemoveFromCart
