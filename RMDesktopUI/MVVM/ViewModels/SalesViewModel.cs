@@ -17,6 +17,10 @@ namespace RMDesktopUI.MVVM.ViewModels
 		private int _ItemQuantity;
         private ProductModel _selectedProduct;
 
+        Decimal _subTotal = 0;
+        Decimal _Tax = 0;
+        Decimal _Total = 0;
+
         IProductEndpoint _productEndpoint;
 
         public SalesViewModel(IProductEndpoint ProductEndpoint)
@@ -82,7 +86,11 @@ namespace RMDesktopUI.MVVM.ViewModels
             get
             {
                 // Calculate the subtotal of the cart
-                return "0.00€";
+                foreach (var item in Cart)
+                {
+                    _subTotal += item.Product.RetailPrice * item.QuantityInCart;
+                }
+                return _subTotal.ToString("C");
             }
         }
 
@@ -91,7 +99,9 @@ namespace RMDesktopUI.MVVM.ViewModels
             get
             {
                 // Calculate the tax of the cart
-                return "0.00€";
+                _Tax = _subTotal * 1.10m;
+
+                return _Tax.ToString("c");
             }
         }
 
@@ -100,7 +110,7 @@ namespace RMDesktopUI.MVVM.ViewModels
             get
             {
                 // Calculate the total of the cart
-                return "0.00€";
+                return (_Tax + _subTotal).ToString("C");
             }
         }
 
@@ -127,6 +137,10 @@ namespace RMDesktopUI.MVVM.ViewModels
                 QuantityInCart = ItemQuantity
             };
             Cart.Add(cartItem);
+            NotifyOfPropertyChange(() => SubTotal);
+            NotifyOfPropertyChange(() => Tax);
+            NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
 
 		public bool CanRemoveFromCart
@@ -141,15 +155,22 @@ namespace RMDesktopUI.MVVM.ViewModels
 
 		public void RemoveFromCart()
 		{
-			// Remove the selected product from the cart
-		}
+            // Remove the selected product from the cart
+            NotifyOfPropertyChange(() => SubTotal);
+            NotifyOfPropertyChange(() => Tax);
+            NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
+        }
 
 		public bool CanCheckOut
         {
             get
             {
                 bool output = false;
-                // Make sure the cart has something in it
+                if (Cart.Count > 0)
+                {
+                    output = true;
+                }
                 return output;
             }
         }

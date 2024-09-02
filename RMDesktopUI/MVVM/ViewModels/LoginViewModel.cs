@@ -90,6 +90,13 @@ namespace RMDesktopUI.MVVM.ViewModels
             }
         }
 
+        private async void Password_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+
+            if (CanLogIn == true && e.Key == Key.Enter )
+            {
+                await LogIn();
+            }}
 
         public async Task LogIn()
         {

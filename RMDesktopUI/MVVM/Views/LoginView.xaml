@@ -50,8 +50,7 @@
                          BorderThickness="0,0,0,1" FontFamily="poppins" AcceptsReturn="False">
                         <TextBox.InputBindings>
                             <KeyBinding Key="Enter"
-                                        CommandParameter="{Binding Path=Text, RelativeSource={RelativeSource AncestorType={x:Type TextBox}}}"
-                                        Command="{Binding LogInCommand}"/>  
+                                        Command="{Binding Password_KeyDown}"/>  
                         </TextBox.InputBindings>
                         <TextBox.Style>
                             <Style TargetType="TextBox">
@@ -77,6 +76,10 @@
                     <PasswordBox x:Name="Password" VerticalAlignment="Center" HorizontalAlignment="Right" 
                                  BorderThickness="0,0,0,2" Foreground="white" FontSize="20"
                                  Width="250" MinHeight="30">
+                        <PasswordBox.InputBindings>
+                            <KeyBinding Key="Enter"
+                                        Command="{Binding Password_KeyDown}"/>
+                        </PasswordBox.InputBindings>
                         <PasswordBox.Style>
                             <Style TargetType="PasswordBox">
                                 <Setter Property="Background" Value="Transparent"/>
