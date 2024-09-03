@@ -32,11 +32,11 @@
                          SelectedItem="{Binding SelectedProduct}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                        <!--<StackPanel Orientation="Horizontal">-->
-                            <TextBlock Text="{Binding ProductName}" FontSize="18" Foreground="White"/>
-                            <!--<TextBlock Text="{Binding RetailPrice}" FontSize="18" Foreground="White"/><-->
-                            <!--</StackPanel>-->
-                            </DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding StockQuantity}" FontSize="18" Foreground="white"/>
+                                <TextBlock Text="{Binding ProductName}" FontSize="18" Foreground="White"/>
+                            </StackPanel>
+                        </DataTemplate>
                     </ListBox.ItemTemplate>
                     <ListBox.Resources>
                         <Style TargetType="Border">

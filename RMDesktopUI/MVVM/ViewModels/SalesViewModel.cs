@@ -131,12 +131,28 @@ namespace RMDesktopUI.MVVM.ViewModels
 
 		public void AddToCart()
         {
-            CartItemModel cartItem = new CartItemModel
+            CartItemModel existingCartItem = Cart.FirstOrDefault(x => x.Product.Id == SelectedProduct.Id);
+            // Add the selected product to the cart
+            if (existingCartItem != null)
             {
-                Product = SelectedProduct,
-                QuantityInCart = ItemQuantity
-            };
-            Cart.Add(cartItem);
+                existingCartItem.QuantityInCart += ItemQuantity;
+            }
+            else
+            {
+                CartItemModel cartItem = new CartItemModel
+                {
+                    Product = SelectedProduct,
+                    QuantityInCart = ItemQuantity
+                };
+                Cart.Add(cartItem);
+            }
+            //prevent the user from adding the same product out of stock
+            SelectedProduct.StockQuantity -= ItemQuantity;
+            ItemQuantity = 0;
+
+            //Notify the UI that the properties have changed
+            //NotifyOfPropertyChange(() => existingCartItem.DisplayText);
+            //NotifyOfPropertyChange(() => SelectedProduct.StockQuantity);
             NotifyOfPropertyChange(() => SubTotal);
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
