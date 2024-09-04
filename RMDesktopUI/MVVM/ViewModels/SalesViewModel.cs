@@ -98,8 +98,15 @@ namespace RMDesktopUI.MVVM.ViewModels
         {
             get
             {
+                
                 // Calculate the tax of the cart
-                _Tax = _subTotal * 1.10m;
+                foreach (var item in Cart)
+                {
+                    if (item.Product.IsTaxable)
+                    {
+                        _Tax += item.Product.RetailPrice * item.QuantityInCart * 0.2m;
+                    }
+                }
 
                 return _Tax.ToString("c");
             }

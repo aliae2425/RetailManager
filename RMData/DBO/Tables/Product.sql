@@ -8,6 +8,7 @@
 	[StockQuantity] INT NOT NULL DEFAULT 1,
 	
 	[creationDate] DATETIME2 NOT NULL DEFAULT getutcdate(),
-	[lastUpdate] DATETIME2 NOT NULL DEFAULT getutcdate(),
+	[lastUpdate] DATETIME2 NOT NULL DEFAULT getutcdate(), 
+    [IsTaxable] BIT NOT NULL DEFAULT 1,
 
 )
