@@ -5,12 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RMDesktopUI.MVVM.Views"
         mc:Ignorable="d"
-        Background="#2a2f39"
-        Foreground="White"
-        Title="ShellView" MinHeight="450" MaxHeight="800" Height="450" Width="800">
+        Title="ShellView"
+        
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        Background="Transparent"
+        
+        Height="600" 
+        Width="800">
     
         <Grid>
-            <ContentControl x:Name="ActiveItem" Margin="5"/>
+            <!--window border-->
+            <Border Background="#212529" 
+                    CornerRadius="20"/>
+            <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <ContentControl Grid.Column="1" x:Name="ActiveItem" Margin="5"/>
+                
+            </Grid>
+            
         </Grid>
     
 </Window>
