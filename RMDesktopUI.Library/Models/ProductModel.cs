@@ -12,5 +12,15 @@
         public int StockQuantity { get; set; }
         public bool IsTaxable { get; set; }
 
+        public int QuantityInCart { get; set; }
+
+        public string DisplayText
+        {
+            get
+            {
+                return $"[{StockQuantity - QuantityInCart}] {ProductName}";
+            }
+        }
+
     }
 }

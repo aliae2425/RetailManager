@@ -33,8 +33,8 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding StockQuantity}" FontSize="18" Foreground="white"/>
-                                <TextBlock Text="{Binding ProductName}" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="{Binding DisplayText}" FontSize="18" Foreground="white"/>
+                                <!--<TextBlock Text="{Binding ProductName}" FontSize="18" Foreground="White"/>-->
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

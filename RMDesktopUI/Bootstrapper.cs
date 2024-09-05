@@ -2,6 +2,7 @@
 using RMDesktopUI.Helpers;
 using RMDesktopUI.Library;
 using RMDesktopUI.Library.API;
+using RMDesktopUI.Library.Helpers;
 using RMDesktopUI.MVVM.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace RMDesktopUI
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<ILoggedInUserModel, LoggedInUserModel>()
+                .Singleton<IConfigHelper, ConfigHelper>()
                 .Singleton<IAPIHelper, APIHelper>();
 
             GetType().Assembly.GetTypes()
