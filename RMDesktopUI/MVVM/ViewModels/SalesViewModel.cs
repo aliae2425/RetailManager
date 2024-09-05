@@ -96,7 +96,7 @@ namespace RMDesktopUI.MVVM.ViewModels
 
         private decimal calculateTax()
         {
-            decimal TaxRate = (decimal)_configHelper.GetTaxRate();
+            decimal TaxRate = (decimal)_configHelper.GetTaxRate() / 100;
             decimal _Tax = 0;
 
             // Calculate the tax of the cart
@@ -104,7 +104,7 @@ namespace RMDesktopUI.MVVM.ViewModels
             {
                 if (item.Product.IsTaxable)
                 {
-                    _Tax += item.Product.RetailPrice * item.QuantityInCart * (TaxRate/100);
+                    _Tax += item.Product.RetailPrice * item.QuantityInCart * TaxRate;
                 }
             }
 
