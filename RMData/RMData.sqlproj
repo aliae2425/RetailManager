@@ -74,4 +74,7 @@
     <Build Include="DBO\Stored Procedures\spUserLookup.sql" />
     <Build Include="DBO\Stored Procedures\SpProduct_GetAll.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="RMData.refactorlog" />
+  </ItemGroup>
 </Project>
