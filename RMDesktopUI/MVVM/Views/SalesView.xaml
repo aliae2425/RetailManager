@@ -6,10 +6,9 @@
              xmlns:local="clr-namespace:RMDesktopUI.MVVM.Views"
              mc:Ignorable="d" 
              FontFamily="poppins" FontSize="18" Foreground="white"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
 
     <Grid Margin="15">
-
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
@@ -18,16 +17,21 @@
         <TextBlock Grid.Row="0" Margin="10 0" Text="Sales" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left"/>
 
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
 
-            <StackPanel Grid.Column="0">
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                
                 <TextBlock Text="Products" FontSize="18" Foreground="White"/>
                 <ListBox x:Name="Products"
-                        Width="200" Height="250" FontSize="18" Foreground="White" 
+                         Width="450" Height="200" FontSize="18" Foreground="White"
+                         Margin="0 25 0 0"
                          Background="#37404d" BorderBrush="Gray" 
                          SelectedItem="{Binding SelectedProduct}">
                     <ListBox.ItemTemplate>
@@ -35,9 +39,9 @@
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{Binding ProductName}" FontSize="18" Foreground="White"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding RetailPrice}" FontSize="18" Foreground="White"/>
-                                    <TextBlock Text="€" FontSize="18" Foreground="White"/>
-                                    <TextBlock Text="{Binding StockQuantity}" FontSize="18" Foreground="White" Margin="10 0"/>
+                                    <TextBlock Text="{Binding RetailPrice, StringFormat='{}{0:C}'}" FontSize="12" Foreground="White"/>
+                                    <TextBlock Text="€" FontSize="12" Foreground="White"/>
+                                    <TextBlock Text="{Binding StockQuantity}" FontSize="12" Foreground="White" Margin="10 0"/>
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>
@@ -48,7 +52,7 @@
                         </Style>
                     </ListBox.Resources>
                 </ListBox>
-            </StackPanel>
+
 
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock Text="Quantity" FontSize="18" Foreground="White"/>
@@ -79,11 +83,13 @@
                     </Button.Resources>
                 </Button>
             </StackPanel>
-
-            <StackPanel Grid.Column="2" Grid.ColumnSpan="5">
+            </Grid>
+                
+                
+            <StackPanel Grid.Row="2">
                 <TextBlock Text="Cart" FontSize="18" Foreground="White"/>
                 <ListBox x:Name="Cart"
-                             Width="200" Height="250" FontSize="18" Foreground="White" 
+                             Width="700" Height="200" FontSize="18" Foreground="White" 
                              Background="#37404d" BorderBrush="Gray"
                              >
                     <ListBox.ItemTemplate>
