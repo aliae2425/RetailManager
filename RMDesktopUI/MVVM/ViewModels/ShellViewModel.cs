@@ -11,19 +11,16 @@ namespace RMDesktopUI.MVVM.ViewModels
 {
     internal class ShellViewModel : Conductor<object>, IHandle<LogOnEvent>
     {
-        private LoginViewModel _loginVM;
         private SalesViewModel _salesVM;
         private IEventAggregator _events;
-        private SimpleContainer _container;
-        public ShellViewModel(SalesViewModel SalesVM, IEventAggregator events, SimpleContainer container)
+        public ShellViewModel(SalesViewModel SalesVM, IEventAggregator events)
         {
             _events = events;
             _salesVM = SalesVM;
-            _container = container;
 
             _events.SubscribeOnPublishedThread(this);
 
-            ActivateItemAsync(_container.GetInstance<LoginViewModel>());
+            ActivateItemAsync(IoC.Get<LoginViewModel>());
         }
 
 
