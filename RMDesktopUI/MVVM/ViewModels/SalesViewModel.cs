@@ -100,13 +100,17 @@ namespace RMDesktopUI.MVVM.ViewModels
             decimal _Tax = 0;
 
             // Calculate the tax of the cart
-            foreach (var item in Cart)
-            {
-                if (item.Product.IsTaxable)
-                {
-                    _Tax += item.Product.RetailPrice * item.QuantityInCart * TaxRate;
-                }
-            }
+            _Tax = Cart
+                .Where(x => x.Product.IsTaxable)
+                .Sum(x => x.Product.RetailPrice * x.QuantityInCart * TaxRate);
+
+            //foreach (var item in Cart)
+            //{
+            //    if (item.Product.IsTaxable)
+            //    {
+            //        _Tax += item.Product.RetailPrice * item.QuantityInCart * TaxRate;
+            //    }
+            //}
 
             return _Tax;
         }
