@@ -11,5 +11,7 @@ namespace RMDesktopUI.Library.Models
         public ProductModel Product { get; set; }
         public int QuantityInCart { get; set; }
         public string DisplayText => $"[{QuantityInCart}] {Product.ProductName} ";
+
+        public decimal TotalPrice => QuantityInCart * Product.RetailPrice;
     }
 }

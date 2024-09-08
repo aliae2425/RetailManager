@@ -94,10 +94,15 @@
                              >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <!--<StackPanel Orientation="Horizontal">-->
-                            <TextBlock Text="{Binding DisplayText}" FontSize="18" Foreground="White"/>
-                            <!--<TextBlock Text="{Binding RetailPrice}" FontSize="18" Foreground="White"/><-->
-                            <!--</StackPanel>-->
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Product.ProductName}" FontSize="18" Foreground="White"/>
+                                <TextBlock Text=" | " FontSize="18" Foreground="White"/>
+                                <TextBlock Text="{Binding QuantityInCart}" FontSize="18" Foreground="White"/>
+                                <TextBlock Text=" | " FontSize="18" Foreground="White"/>
+                                <TextBlock Text="{Binding TotalPrice, StringFormat='{}{0:C}'}" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="€ " FontSize="18" Foreground="White"/>
+                            </StackPanel>
+                            <!--<TextBlock Text="{Binding DisplayText}" FontSize="18" Foreground="White"/>-->
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                     <ListBox.Resources>
