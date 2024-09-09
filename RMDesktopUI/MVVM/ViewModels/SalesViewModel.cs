@@ -163,17 +163,7 @@ namespace RMDesktopUI.MVVM.ViewModels
 
 		public bool CanAddToCart
         {
-            get
-            {
-				bool output = false;
-                // Make sure something is selected
-				// Make sure a quantity is entered
-                if (ItemQuantity >0 && SelectedProduct?.StockQuantity >= ItemQuantity)
-                {
-                    output = true; 
-                }
-                return output;
-            }
+            get { return ItemQuantity > 0 && SelectedProduct?.StockQuantity >= ItemQuantity; }
         }
 
 		public void AddToCart()
@@ -198,20 +188,13 @@ namespace RMDesktopUI.MVVM.ViewModels
             ItemQuantity = 0;
 
             //Notify the UI that the properties have changed
-            NotifyOfPropertyChange(() => SubTotal);
-            NotifyOfPropertyChange(() => Tax);
-            NotifyOfPropertyChange(() => Total);
-            NotifyOfPropertyChange(() => CanCheckOut);
+            Update();
         }
 
 		public bool CanRemoveFromCart
         {
-            get
-            {
-                bool output = false;
-                // Make sure something is selected
-                return output = Cart.Count > 0 ? true : false;
-            }
+            //TODO : debug this. doesn't trigger the button
+            get { return ItemQuantity > 0 && SelectedCartItem?.QuantityInCart > ItemQuantity; }
         }
 
 		public void RemoveFromCart()
@@ -226,7 +209,7 @@ namespace RMDesktopUI.MVVM.ViewModels
             {
                 Cart.Remove(SelectedItem);
             }
-            this.Update();
+            Update();
         }
 
 		public bool CanCheckOut
