@@ -91,6 +91,7 @@
                 <ListBox x:Name="Cart"
                              Width="700" Height="200" FontSize="18" Foreground="White" 
                              Background="#37404d" BorderBrush="Gray"
+                             SelectedItem="{Binding SelectedCartItem}"
                              >
                     <ListBox.ItemTemplate>
                         <DataTemplate>

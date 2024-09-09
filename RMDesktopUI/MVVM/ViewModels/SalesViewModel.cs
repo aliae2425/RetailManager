@@ -17,6 +17,7 @@ namespace RMDesktopUI.MVVM.ViewModels
 		private BindingList<CartItemModel> _cart = new BindingList<CartItemModel>();
 		private int _ItemQuantity;
         private ProductModel _selectedProduct;
+        private CartItemModel _selectedCartItem;
 
         Decimal _subTotal = 0;
         Decimal _Tax = 0;
@@ -24,6 +25,16 @@ namespace RMDesktopUI.MVVM.ViewModels
 
         IProductEndpoint _productEndpoint;
         IConfigHelper _configHelper;
+
+        private void Update()
+        {
+            NotifyOfPropertyChange(() => SubTotal);
+            NotifyOfPropertyChange(() => Tax);
+            NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
+            NotifyOfPropertyChange(() => CanAddToCart);
+            NotifyOfPropertyChange(() => CanRemoveFromCart);
+        }
 
         public SalesViewModel(IProductEndpoint ProductEndpoint, IConfigHelper configHelper)
         {
@@ -69,6 +80,16 @@ namespace RMDesktopUI.MVVM.ViewModels
             set { 
                 _selectedProduct = value;
                 NotifyOfPropertyChange(() => SelectedProduct);
+            }
+        }
+
+        public CartItemModel SelectedCartItem
+        {
+            get { return _selectedCartItem; }
+            set
+            {
+                _selectedCartItem = value;
+                NotifyOfPropertyChange(() => SelectedCartItem);
             }
         }
 
@@ -177,8 +198,6 @@ namespace RMDesktopUI.MVVM.ViewModels
             ItemQuantity = 0;
 
             //Notify the UI that the properties have changed
-            NotifyOfPropertyChange(() => existingCartItem.DisplayText);
-            NotifyOfPropertyChange(() => SelectedProduct.DisplayText);
             NotifyOfPropertyChange(() => SubTotal);
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
@@ -191,17 +210,23 @@ namespace RMDesktopUI.MVVM.ViewModels
             {
                 bool output = false;
                 // Make sure something is selected
-                return output;
+                return output = Cart.Count > 0 ? true : false;
             }
         }
 
 		public void RemoveFromCart()
 		{
             // Remove the selected product from the cart
-            NotifyOfPropertyChange(() => SubTotal);
-            NotifyOfPropertyChange(() => Tax);
-            NotifyOfPropertyChange(() => Total);
-            NotifyOfPropertyChange(() => CanCheckOut);
+            CartItemModel SelectedItem = Cart.FirstOrDefault(x => x.Product.Id == SelectedCartItem.Product.Id);
+            if (SelectedItem.QuantityInCart > 1)
+            {
+                SelectedItem.QuantityInCart -= ItemQuantity;
+            }
+            else
+            {
+                Cart.Remove(SelectedItem);
+            }
+            this.Update();
         }
 
 		public bool CanCheckOut
