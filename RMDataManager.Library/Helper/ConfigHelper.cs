@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RMDesktopUI.Library.Helpers
+namespace RMDataManager.Library.Helper
 {
-    public class ConfigHelper : IConfigHelper
+    public class ConfigHelper
     {
 
-        //todo : move this to the api
-        public double GetTaxRate()
+        public static double GetTaxRate()
         {
             double output = 0;
 

@@ -199,30 +199,23 @@ namespace RMDesktopUI.MVVM.ViewModels
 
 		public void RemoveFromCart()
 		{
-            // Remove the selected product from the cart
-            CartItemModel SelectedItem = Cart.FirstOrDefault(x => x.Product.Id == SelectedCartItem.Product.Id);
-            if (SelectedItem.QuantityInCart > 1)
-            {
-                SelectedItem.QuantityInCart -= ItemQuantity;
-            }
-            else
-            {
-                Cart.Remove(SelectedItem);
-            }
-            Update();
+            //// Remove the selected product from the cart
+            //CartItemModel SelectedItem = Cart.FirstOrDefault(x => x.Product.Id == SelectedCartItem.Product.Id);
+            //if (SelectedItem.QuantityInCart > 1)
+            //{
+            //    SelectedItem.QuantityInCart -= ItemQuantity;
+            //}
+            //else
+            //{
+            //    Cart.Remove(SelectedItem);
+            //}
+            //Update();
         }
 
 		public bool CanCheckOut
         {
-            get
-            {
-                bool output = false;
-                if (Cart.Count > 0)
-                {
-                    output = true;
-                }
-                return output;
-            }
+            get { return Cart.Count > 0; }
+                
         }
 
         public void CheckOut()
