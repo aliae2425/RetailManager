@@ -194,7 +194,7 @@ namespace RMDesktopUI.MVVM.ViewModels
 		public bool CanRemoveFromCart
         {
             //TODO : debug this. doesn't trigger the button
-            get { return ItemQuantity > 0 && SelectedCartItem?.QuantityInCart > ItemQuantity; }
+            get { return Cart.Count > 0; }
         }
 
 		public void RemoveFromCart()
@@ -220,7 +220,10 @@ namespace RMDesktopUI.MVVM.ViewModels
 
         public void CheckOut()
         {
-            // Check out the cart
+            // Check out the
+            SaleModel sale = new SaleModel();
+            Cart.ToList().ForEach(x => sale.SaleDetails.Add(new SaleDetailModel { ProductId = x.Product.Id, Quantity = x.QuantityInCart }));
+            //TODO : Implement the API call to check out the sale
         }
 
 	}

@@ -16,8 +16,8 @@ namespace RMDesktopUI.MVVM.ViewModels
 {
     public class LoginViewModel : Screen
     {
-        private string _username;
-        private string _password;
+        private string _username = "noam.carmi80@gmail.com";
+        private string _password = "Pwd12345.";
         private string _errorMessage;
         private IAPIHelper _apiHelper;
         private IEventAggregator _events;
