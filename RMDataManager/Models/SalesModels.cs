@@ -7,6 +7,7 @@ namespace RMDataManager.Models
 {
     public class SalesModels
     {
+        public List<SalesDetailsModels> SaleDetails { get; set; } 
 
     }
 }
