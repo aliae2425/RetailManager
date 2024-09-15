@@ -71,6 +71,7 @@
     <Compile Include="API\IAPIHelper.cs" />
     <Compile Include="API\IProductEndpoint.cs" />
     <Compile Include="API\ProductEndpoint.cs" />
+    <Compile Include="API\SaleEndPoint.cs" />
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\IConfigHelper.cs" />
     <Compile Include="Models\CartItemModel.cs" />

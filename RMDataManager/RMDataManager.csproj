@@ -353,6 +353,10 @@
       <Project>{778dd4bb-802f-461d-9049-806e542a2b3a}</Project>
       <Name>RMDataManager.Library</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RMDesktopUI.Library\RMDesktopUI.Library.csproj">
+      <Project>{FDFDBD87-92C5-4165-8F1E-63EF13BBF80C}</Project>
+      <Name>RMDesktopUI.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
