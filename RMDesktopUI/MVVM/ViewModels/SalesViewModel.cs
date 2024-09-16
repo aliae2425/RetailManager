@@ -19,10 +19,12 @@ namespace RMDesktopUI.MVVM.ViewModels
         private ProductModel _selectedProduct;
         private CartItemModel _selectedCartItem;
 
+
         Decimal _subTotal = 0;
         Decimal _Tax = 0;
         Decimal _Total = 0;
 
+        ISaleEndPoint _SaleEndPoint;
         IProductEndpoint _productEndpoint;
         IConfigHelper _configHelper;
 
@@ -36,8 +38,9 @@ namespace RMDesktopUI.MVVM.ViewModels
             NotifyOfPropertyChange(() => CanRemoveFromCart);
         }
 
-        public SalesViewModel(IProductEndpoint ProductEndpoint, IConfigHelper configHelper)
+        public SalesViewModel(IProductEndpoint ProductEndpoint,ISaleEndPoint saleEndPoint,IConfigHelper configHelper)
         {
+            _SaleEndPoint = saleEndPoint;
             _productEndpoint = ProductEndpoint;
             _configHelper = configHelper;
         }
@@ -218,12 +221,12 @@ namespace RMDesktopUI.MVVM.ViewModels
                 
         }
 
-        public void CheckOut()
+        public async Task CheckOut()
         {
             // Check out the
             SaleModel sale = new SaleModel();
             Cart.ToList().ForEach(x => sale.SaleDetails.Add(new SaleDetailModel { ProductId = x.Product.Id, Quantity = x.QuantityInCart }));
-            //TODO : Implement the API call to check out the sale
+            await _SaleEndPoint.PostSale(sale);
         }
 
 	}

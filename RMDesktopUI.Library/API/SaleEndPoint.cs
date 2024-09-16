@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RMDesktopUI.Library.API
 {
-    internal class SaleEndPoint
+    public class SaleEndPoint : ISaleEndPoint
     {
         private IAPIHelper _apiHelper;
 
