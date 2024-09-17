@@ -73,6 +73,7 @@
     <Build Include="DBO\Tables\Inventory.sql" />
     <Build Include="DBO\Stored Procedures\spUserLookup.sql" />
     <Build Include="DBO\Stored Procedures\SpProduct_GetAll.sql" />
+    <Build Include="DBO\Stored Procedures\spProduct_GetById.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="RMData.refactorlog" />

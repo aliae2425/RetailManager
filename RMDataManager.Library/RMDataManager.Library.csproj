@@ -49,6 +49,8 @@
     <Compile Include="DataAccess\SaleData.cs" />
     <Compile Include="Helper\ConfigHelper.cs" />
     <Compile Include="Model\ProductModel.cs" />
+    <Compile Include="Model\SaleDBModel.cs" />
+    <Compile Include="Model\SaleDetailDBModel.cs" />
     <Compile Include="Model\SalesDetailsModels.cs" />
     <Compile Include="Model\SalesModels.cs" />
     <Compile Include="Model\UserModel.cs" />

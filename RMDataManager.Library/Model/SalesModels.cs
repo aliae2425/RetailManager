@@ -5,9 +5,9 @@ using System.Web;
 
 namespace RMDataManager.Library.Models
 {
-    public class SalesModels
+    public class SalesModel
     {
-        public List<SalesDetailsModels> SaleDetails { get; set; } 
+        public List<SalesDetailsModel> SaleDetails { get; set; } 
 
     }
 }
