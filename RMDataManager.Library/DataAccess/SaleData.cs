@@ -1,4 +1,6 @@
-﻿using RMDataManager.Library.Model;
+﻿using RMDataManager.Library.Helper;
+using RMDataManager.Library.Internal.DataAccess;
+using RMDataManager.Library.Model;
 using RMDesktopUI.Library.Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +17,9 @@ namespace RMDataManager.Library.DataAccess
         {
             List<SaleDetailsDBModel> details = new List<SaleDetailsDBModel>();
             ProductData productData = new ProductData();
+            double taxRate = ConfigHelper.GetTaxRate();
 
+            //fill the sale details 
             foreach (var item in saleInfo.SaleDetails)
             {
                 var detail = new SaleDetailsDBModel
@@ -31,9 +35,30 @@ namespace RMDataManager.Library.DataAccess
                     throw new Exception($"The product Id of {detail.ProductId} could not be found in the database");
                 }
 
+                detail.PurchasePrice = productInfo.RetailPrice*detail.Quantity;
+                
+                if(productInfo.IsTaxable)
+                {
+                    detail.tax = detail.PurchasePrice * (decimal)taxRate;
+                }
                 details.Add(detail);
             }
 
+            SaleDBModel sale = new SaleDBModel
+            {
+                CashierId = cashierId,
+                SubTotal = details.Sum(x => x.PurchasePrice),
+                Tax = details.Sum(x => x.tax),
+            };
+            sale.Total = sale.SubTotal + sale.Tax;
+
+
+            //Save to the database
+            SQLDataAccess sql = new SQLDataAccess();
+            sql.SaveData<SaleDBModel>("dbo.spSale_Insert", sale, "RMData"); //Todo : Add the stored procedure
+
+
         }
+
     }
 }
