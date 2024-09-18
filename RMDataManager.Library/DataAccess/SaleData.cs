@@ -57,6 +57,11 @@ namespace RMDataManager.Library.DataAccess
             SQLDataAccess sql = new SQLDataAccess();
             sql.SaveData<SaleDBModel>("dbo.spSale_Insert", sale, "RMData"); //Todo : Add the stored procedure
 
+            details.ForEach(x =>
+            {
+                x.SaleId = sale.Id;
+                sql.SaveData<SaleDetailsDBModel>("dbo.spSaleDetails_Insert", x, "RMData"); //Todo : Add the stored procedure
+            });
 
         }
 
